@@ -28,9 +28,10 @@ const StockTable = (() => {
       const row = document.createElement("tr");
       row.dataset.ticker = ticker.symbol;
 
-      row.appendChild(createCell(CELL_CLASS, ticker.name));
+      const nameCell = createCell(`${CELL_CLASS} stockname`, ticker.name);
+      row.appendChild(nameCell);
 
-      const symbolCell = createCell(`${CELL_CLASS} text-[#58a6ff] font-semibold`, ticker.symbol);
+      const symbolCell = createCell(`${CELL_CLASS} text-[#58a6ff] font-semibold symbol`, ticker.symbol);
       row.appendChild(symbolCell);
 
       const priceCell = createCell(`${CELL_CLASS} text-lg font-bold ${MUTED_CLASS} price`, "--");
@@ -47,15 +48,19 @@ const StockTable = (() => {
     return tbody.querySelector(`tr[data-ticker="${symbol}"]`);
   }
 
-  function updateQuote(tbody, symbol, price, changePercent) {
+  function updateQuote(tbody, symbol, name, price, changePercent) {
     const row = getRowByTicker(tbody, symbol);
     if (!row) {
       return;
     }
 
+    const nameCell = row.querySelector(".stockname");
     const priceCell = row.querySelector(".price");
     const changeCell = row.querySelector(".change");
     const isUp = changePercent >= 0;
+
+    nameCell.className = `${CELL_CLASS} stockname`;
+    nameCell.textContent = name;
 
     priceCell.className = `${CELL_CLASS} text-lg font-bold price`;
     priceCell.textContent = `$${price.toFixed(2)}`;

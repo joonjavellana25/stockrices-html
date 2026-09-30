@@ -29,7 +29,7 @@ const StockApp = (() => {
       try {
         const quote = await StockApi.fetchQuote(ticker.symbol, StockConfig);
         if (quote) {
-          StockTable.updateQuote(elements.table, ticker.symbol, quote.price, quote.changePercent);
+          StockTable.updateQuote(elements.table, ticker.symbol, quote.name, quote.price, quote.changePercent);
         }
       } catch (error) {
         console.error(`Failed to load ${ticker.symbol}:`, error);
