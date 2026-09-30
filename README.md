@@ -1,8 +1,10 @@
-# Tech Stock Prices
+# Tech Stock Prices Web Demo
+> by Joonjavellana, 30 Sept 2026
 
 ## How to Use
 
 1. [Get a free API key from Alpha Vantage](https://www.alphavantage.co/support/#api-key).
+1a. [Get a free API key from Twelve Data](https://twelvedata.com/docs).
 2. Copy `.env.example` to `.env` and set `ALPHA_VANTAGE_API_KEY`.
 3. Run `node server.js` and open [http://localhost:8000/](http://localhost:8000/).
 

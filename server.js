@@ -41,7 +41,7 @@ function loadDotEnv(filePath) {
 }
 
 const fileEnv = loadDotEnv(path.join(ROOT, ".env"));
-const apiKey = process.env.ALPHA_VANTAGE_API_KEY || fileEnv.ALPHA_VANTAGE_API_KEY || "";
+const apiKey = process.env.TWELVE_DATA_API_KEY || fileEnv.TWELVE_DATA_API_KEY || ""; // API key from your .env
 
 const MIME_TYPES = {
   ".css": "text/css; charset=utf-8",

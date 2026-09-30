@@ -5,25 +5,26 @@ const StockApi = (() => {
 
   function buildQuoteUrl(symbol, apiKey, apiUrl) {
     const url = new URL(apiUrl);
-    url.searchParams.set("function", "GLOBAL_QUOTE");
+    // url.searchParams.set("function", "GLOBAL_QUOTE");
     url.searchParams.set("symbol", symbol);
     url.searchParams.set("apikey", apiKey);
     return url;
   }
 
   function parseQuote(payload) {
-    const quote = payload["Global Quote"];
-    if (!quote || !quote["05. price"]) {
+    const quote = payload;
+    if (!quote || !quote["name"] || !quote["close"]) {
       return null;
     }
 
-    const price = parseFloat(quote["05. price"]);
-    const changePercent = parseFloat(quote["10. change percent"]);
+    const name = quote["name"];
+    const price = parseFloat(quote["close"]);
+    const changePercent = parseFloat(quote["percent_change"]);
     if (!Number.isFinite(price) || !Number.isFinite(changePercent)) {
       return null;
     }
 
-    return { price, changePercent };
+    return { name, price, changePercent };
   }
 
   async function fetchQuote(symbol, { apiKey, apiUrl }) {
