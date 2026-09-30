@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Stock Prices</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0f1115] text-[#e6e6e6] flex justify-center p-10 md:p-20 min-h-screen">
+  <div class="bg-[#1a1d24] rounded-2xl p-8 max-w-xl w-full shadow-lg">
+    <h1 class="text-2xl mb-2 font-semibold">Live Tech Stock Prices</h1>
+    <div class="text-[#9aa0a6] text-sm mb-5 flex justify-between items-center">
+      <span id="timestamp">Loading…</span>
+      <button id="refreshBtn" type="button"
+        class="bg-[#58a6ff] hover:bg-[#338eda] text-[#0f1115] font-semibold py-1.5 px-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition"
+      >Refresh</button>
+    </div>
+    <table class="w-full min-w-[320px] text-sm" id="stockTableWrapper">
+      <thead>
+        <tr id="stockTableHeader"></tr>
+      </thead>
+      <tbody id="stockTable"></tbody>
+    </table>
+    <div class="mt-5 text-center text-[#9aa0a6] text-xs">Free Alpha Vantage API • 5 calls/min limit</div>
+  </div>
+  <script src="js/env.js" defer></script>
+  <script src="js/config.js" defer></script>
+  <script src="js/table.js" defer></script>
+  <script src="js/api.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
